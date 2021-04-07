@@ -28,6 +28,7 @@ class Category extends Model
     use HasFactory;
 
     protected $table = 'categories';
+    protected $hidden = ['created_at', 'updated_at'];
 
     public function projects() {
         return $this->belongsToMany(Project::class, 'project_categories');

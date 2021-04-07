@@ -29,6 +29,8 @@ class Contractstatus extends Model
 {
     use HasFactory;
 
+    protected $hidden = ['created_at', 'updated_at'];
+
     public function contracts() {
         return $this->hasMany(Contract::class, 'contractstatus_id');
     }

@@ -27,6 +27,8 @@ class Type extends Model
 {
     use HasFactory;
 
+    protected $hidden = ['created_at', 'updated_at'];
+
     public function projects() {
         return $this->belongsToMany(Project::class, 'project_types');
     }

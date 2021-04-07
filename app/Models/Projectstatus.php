@@ -29,6 +29,8 @@ class Projectstatus extends Model
 {
     use HasFactory;
 
+    protected $hidden = ['created_at', 'updated_at'];
+
     public function projects() {
         return $this->hasMany(Project::class, 'projectstatus_id');
     }
