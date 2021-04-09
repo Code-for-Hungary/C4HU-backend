@@ -25,3 +25,9 @@ php artisan route:clear
 php artisan view:clear
 php artisan queue:restart
 ```
+
+## Generate APIDOC
+```
+cd C4HU-backend
+apidoc -i app/Http/Controllers -o apidoc/
+```

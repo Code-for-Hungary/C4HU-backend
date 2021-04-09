@@ -1,0 +1,6 @@
+{
+    "name": "C4HU Platform backend API",
+    "version": "0.1.0",
+    "description": "Laravel API for CodeForHungary Platform",
+    "url": "http://c4hubackend.local/api"
+}
