@@ -32,6 +32,7 @@ class Skillgroup extends Model
     use HasFactory;
 
     protected $hidden = ['created_at', 'updated_at'];
+    protected $fillable = ['name', 'order'];
 
     public function projects() {
         return $this->belongsToMany(Project::class, 'project_skillgroups');

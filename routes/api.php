@@ -1,9 +1,8 @@
 <?php
 
-use App\Http\Resources\CategoryResource;
-use App\Http\Resources\ProjectResource;
-use App\Models\Category;
-use App\Models\Project;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\TypeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,18 +21,20 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/categories', function() {
-    return CategoryResource::collection(Category::paginate(3));
-});
+Route::get('/categories', [CategoryController::class, 'index']);
+Route::get('/categories/{category}', [CategoryController::class, 'show']);
+Route::post('/categories', [CategoryController::class, 'store']);
+Route::put('/categories/{category}', [CategoryController::class, 'update']);
+Route::delete('/categories/{category}', [CategoryController::class, 'destroy']);
 
-Route::get('/categories/{id}', function($id) {
-    return new CategoryResource(Category::findOrFail($id));
-});
+Route::get('/types', [TypeController::class, 'index']);
+Route::get('/types/{type}', [TypeController::class, 'show']);
+Route::post('/types', [TypeController::class, 'store']);
+Route::put('/types/{type}', [TypeController::class, 'update']);
+Route::delete('/types/{type}', [TypeController::class, 'destroy']);
 
-Route::get('/projects', function() {
-    return ProjectResource::collection(Project::paginate(3));
-});
-
-Route::get('/projects/{id}', function($id) {
-    return new ProjectResource(Project::findOrFail($id));
-});
+Route::get('/projects', [ProjectController::class, 'index']);
+Route::get('/projects/{project}', [ProjectController::class, 'show']);
+Route::post('/projects', [ProjectController::class, 'store']);
+Route::put('/projects/{project}', [ProjectController::class, 'update']);
+Route::delete('/projects/{project}', [ProjectController::class, 'destroy']);

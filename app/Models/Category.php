@@ -29,6 +29,7 @@ class Category extends Model
 
     protected $table = 'categories';
     protected $hidden = ['created_at', 'updated_at'];
+    protected $fillable = ['name'];
 
     public function projects() {
         return $this->belongsToMany(Project::class, 'project_categories');

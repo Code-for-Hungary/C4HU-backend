@@ -54,6 +54,7 @@ use Illuminate\Database\Eloquent\Model;
 class Project extends Model
 {
     use HasFactory;
+    protected $fillable = ['name', 'description', 'startdate', 'deadline', 'zip', 'city', 'address'];
 
     public function categories() {
         return $this->belongsToMany(Category::class, 'project_categories', 'project_id', 'category_id');
