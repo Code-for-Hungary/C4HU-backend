@@ -5,6 +5,7 @@ use App\Http\Controllers\ContractstatusController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ProjectstatusController;
 use App\Http\Controllers\SkillController;
+use App\Http\Controllers\SkillgroupController;
 use App\Http\Controllers\SkilllevelController;
 use App\Http\Controllers\TypeController;
 use Illuminate\Http\Request;
@@ -42,6 +43,12 @@ Route::get('/skills/{skill}', [SkillController::class, 'show']);
 Route::post('/skills', [SkillController::class, 'store']);
 Route::put('/skills/{skill}', [SkillController::class, 'update']);
 Route::delete('/skills/{skill}', [SkillController::class, 'destroy']);
+
+Route::get('/skillgroups', [SkillgroupController::class, 'index']);
+Route::get('/skillgroups/{skillgroup}', [SkillgroupController::class, 'show']);
+Route::post('/skillgroups', [SkillgroupController::class, 'store']);
+Route::put('/skillgroups/{skillgroup}', [SkillgroupController::class, 'update']);
+Route::delete('/skillgroups/{skillgroup}', [SkillgroupController::class, 'destroy']);
 
 Route::get('/skilllevels', [SkilllevelController::class, 'index']);
 Route::get('/skilllevels/{skilllevel}', [SkilllevelController::class, 'show']);
