@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\SkillController;
+use App\Http\Controllers\SkilllevelController;
 use App\Http\Controllers\TypeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -32,6 +34,18 @@ Route::get('/types/{type}', [TypeController::class, 'show']);
 Route::post('/types', [TypeController::class, 'store']);
 Route::put('/types/{type}', [TypeController::class, 'update']);
 Route::delete('/types/{type}', [TypeController::class, 'destroy']);
+
+Route::get('/skills', [SkillController::class, 'index']);
+Route::get('/skills/{skill}', [SkillController::class, 'show']);
+Route::post('/skills', [SkillController::class, 'store']);
+Route::put('/skills/{skill}', [SkillController::class, 'update']);
+Route::delete('/skills/{skill}', [SkillController::class, 'destroy']);
+
+Route::get('/skilllevels', [SkilllevelController::class, 'index']);
+Route::get('/skilllevels/{skilllevel}', [SkilllevelController::class, 'show']);
+Route::post('/skilllevels', [SkilllevelController::class, 'store']);
+Route::put('/skilllevels/{skilllevel}', [SkilllevelController::class, 'update']);
+Route::delete('/skilllevels/{skilllevel}', [SkilllevelController::class, 'destroy']);
 
 Route::get('/projects', [ProjectController::class, 'index']);
 Route::get('/projects/{project}', [ProjectController::class, 'show']);
