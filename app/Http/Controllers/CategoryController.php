@@ -1,6 +1,6 @@
 <?php
 /**
- * @apiDefine EntityResponse
+ * @apiDefine CategoryResponse
  * @apiSuccess {number} id Category's unique id
  * @apiSuccess {string} name Category's name
  * @apiSuccessExample Success-Response:
@@ -26,7 +26,7 @@ class CategoryController extends Controller
      * @api {get} /categories Request Category index
      * @apiName GetCategoryIndex
      * @apiGroup Category
-     * @apiSuccess {Object[]} categories List of categories
+     * @apiSuccess {Object[]} data List of categories
      * @apiSuccess {number} id Category's unique id
      * @apiSuccess {string} name Category's name
      * @apiSuccessExample {json} Success-Response:
@@ -57,8 +57,8 @@ class CategoryController extends Controller
      * @api {post} /categories Create Category
      * @apiName CreateCategory
      * @apiGroup Category
-     * @apiParam {string} name Category's name
-     * @apiUse EntityResponse
+     * @apiParam (x-www-form-urlencoded) {string} name Category's name
+     * @apiUse CategoryResponse
      *
      * @param  CategoryRequest  $request
      * @return \Illuminate\Http\Response
@@ -74,8 +74,8 @@ class CategoryController extends Controller
      * @api {get} /categories/:id Request Category information
      * @apiName GetCategory
      * @apiGroup Category
-     * @apiParam {number} id Category's unique id
-     * @apiUse EntityResponse
+     * @apiParam (url) {number} id Category's unique id
+     * @apiUse CategoryResponse
      *
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
@@ -91,8 +91,9 @@ class CategoryController extends Controller
      * @api {put} /categories/:id Update Category information
      * @apiName UpdateCategory
      * @apiGroup Category
-     * @apiParam {number} id Category's unique id
-     * @apiUse EntityResponse
+     * @apiParam (url) {number} id Category's unique id
+     * @apiParam (x-www-form-urlencoded) {string} name Category's name
+     * @apiUse CategoryResponse
 
      * @param  CategoryRequest  $request
      * @param  \App\Models\Category  $category
@@ -111,8 +112,8 @@ class CategoryController extends Controller
      * @api {delete} /categories/:id Delete Category
      * @apiName DeleteCategory
      * @apiGroup Category
-     * @apiParam {number} id Category's unique id
-     * @apiUse EntityResponse
+     * @apiParam (url) {number} id Category's unique id
+     * @apiUse CategoryResponse
      *
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response

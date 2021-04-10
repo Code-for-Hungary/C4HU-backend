@@ -1,6 +1,6 @@
 <?php
 /**
- * @apiDefine EntityResponse
+ * @apiDefine TypeResponse
  * @apiSuccess {number} id Type's unique id
  * @apiSuccess {string} name Type's name
  * @apiSuccessExample Success-Response:
@@ -27,7 +27,7 @@ class TypeController extends Controller
      * @api {get} /types Request Type index
      * @apiName GetTypeIndex
      * @apiGroup Type
-     * @apiSuccess {Object[]} types List of types
+     * @apiSuccess {Object[]} data List of types
      * @apiSuccess {number} id Type's unique id
      * @apiSuccess {string} name Type's name
      * @apiSuccessExample {json} Success-Response:
@@ -58,8 +58,8 @@ class TypeController extends Controller
      * @api {post} /types Create Type
      * @apiName CreateType
      * @apiGroup Type
-     * @apiParam {string} name Type's name
-     * @apiUse EntityResponse
+     * @apiParam (x-www-form-urlencoded) {string} name Type's name
+     * @apiUse TypeResponse
 
      * @param  TypeRequest  $request
      * @return \Illuminate\Http\Response
@@ -75,8 +75,8 @@ class TypeController extends Controller
      * @api {get} /types/:id Request Type information
      * @apiName GetType
      * @apiGroup Type
-     * @apiParam {number} id Type's unique id
-     * @apiUse EntityResponse
+     * @apiParam (url) {number} id Type's unique id
+     * @apiUse TypeResponse
 
      * @param  \App\Models\Type  $type
      * @return \Illuminate\Http\Response
@@ -92,8 +92,9 @@ class TypeController extends Controller
      * @api {put} /types/:id Update Type information
      * @apiName UpdateType
      * @apiGroup Type
-     * @apiParam {number} id Type's unique id
-     * @apiUse EntityResponse
+     * @apiParam (url) {number} id Type's unique id
+     * @apiParam (x-www-form-urlencoded) {string} name Type's name
+     * @apiUse TypeResponse
      *
      * @param  TypeRequest  $request
      * @param  \App\Models\Type  $type
@@ -112,8 +113,8 @@ class TypeController extends Controller
      * @api {delete} /types/:id Delete Type
      * @apiName DeleteType
      * @apiGroup Type
-     * @apiParam {number} id Type's unique id
-     * @apiUse EntityResponse
+     * @apiParam (url) {number} id Type's unique id
+     * @apiUse TypeResponse
      *
      * @param  \App\Models\Type  $type
      * @return \Illuminate\Http\Response
