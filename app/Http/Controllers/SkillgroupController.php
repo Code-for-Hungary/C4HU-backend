@@ -17,9 +17,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SkillgroupRequest;
 use App\Http\Resources\SkillgroupResource;
 use App\Models\Skillgroup;
-use Illuminate\Http\Request;
 
 class SkillgroupController extends Controller
 {
@@ -67,10 +67,10 @@ class SkillgroupController extends Controller
      * @apiParam (x-www-form-urlencoded) {number} order Skillgroup's order in UI
      * @apiUse SkillgroupResponse
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\SkillgroupRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SkillgroupRequest $request)
     {
         return new SkillgroupResource(Skillgroup::create($request->validated()));
     }
@@ -103,11 +103,11 @@ class SkillgroupController extends Controller
      * @apiParam (x-www-form-urlencoded) {number} order Skillgroup's order in UI
      * @apiUse SkillgroupResponse
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\SkillgroupRequest  $request
      * @param  \App\Models\Skillgroup  $skillgroup
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Skillgroup $skillgroup)
+    public function update(SkillgroupRequest $request, Skillgroup $skillgroup)
     {
         if ($skillgroup->update($request->validated())) {
             return new SkillgroupResource($skillgroup);

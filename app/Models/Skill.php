@@ -35,7 +35,7 @@ class Skill extends Model
     use HasFactory;
 
     protected $hidden = ['created_at', 'updated_at'];
-    protected $fillable = ['name', 'order'];
+    protected $fillable = ['name', 'order', 'skillgroup_id'];
 
     public function skillgroup() {
         return $this->belongsTo(Skillgroup::class, 'skillgroup_id');

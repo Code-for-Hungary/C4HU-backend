@@ -17,6 +17,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ContractstatusRequest;
 use App\Http\Resources\ContractstatusResource;
 use App\Models\Contractstatus;
 use Illuminate\Http\Request;
@@ -67,10 +68,10 @@ class ContractstatusController extends Controller
      * @apiParam (x-www-form-urlencoded) {number} order Contractstatus's order in UI
      * @apiUse ContractstatusResponse
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\ContractstatusRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ContractstatusRequest $request)
     {
         return new ContractstatusResource(Contractstatus::create($request->validated()));
     }
@@ -103,11 +104,11 @@ class ContractstatusController extends Controller
      * @apiParam (x-www-form-urlencoded) {number} order Contractstatus's order in UI
      * @apiUse ContractstatusResponse
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\ContractstatusRequest  $request
      * @param  \App\Models\Contractstatus  $contractstatus
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Contractstatus $contractstatus)
+    public function update(ContractstatusRequest $request, Contractstatus $contractstatus)
     {
         if ($contractstatus->update($request->validated())) {
             return new ContractstatusResource($contractstatus);

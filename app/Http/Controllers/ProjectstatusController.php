@@ -17,9 +17,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProjectstatusRequest;
 use App\Http\Resources\ProjectstatusResource;
 use App\Models\Projectstatus;
-use Illuminate\Http\Request;
 
 class ProjectstatusController extends Controller
 {
@@ -67,10 +67,10 @@ class ProjectstatusController extends Controller
      * @apiParam (x-www-form-urlencoded) {number} order Projectstatus's order in UI
      * @apiUse ProjectstatusResponse
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\ProjectstatusRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProjectstatusRequest $request)
     {
         return new ProjectstatusResource(Projectstatus::create($request->validated()));
     }
@@ -103,11 +103,11 @@ class ProjectstatusController extends Controller
      * @apiParam (x-www-form-urlencoded) {number} order Projectstatus's order in UI
      * @apiUse ProjectstatusResponse
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\ProjectstatusRequest  $request
      * @param  \App\Models\Projectstatus  $projectstatus
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Projectstatus $projectstatus)
+    public function update(ProjectstatusRequest $request, Projectstatus $projectstatus)
     {
         if ($projectstatus->update($request->validated())) {
             return new ProjectstatusResource($projectstatus);

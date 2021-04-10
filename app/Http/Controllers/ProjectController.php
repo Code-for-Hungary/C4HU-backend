@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProjectRequest;
 use App\Http\Resources\ProjectResource;
 use App\Models\Project;
-use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
@@ -27,10 +27,10 @@ class ProjectController extends Controller
      * @api {post} /projects Create Project
      * @apiName CreateProject
      * @apiGroup Project
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\ProjectRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProjectRequest $request)
     {
         //
     }
@@ -55,11 +55,11 @@ class ProjectController extends Controller
      * @api {put} /projects/:id Update Project information
      * @apiName UpdateProject
      * @apiGroup Project
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\ProjectRequest  $request
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Project $project)
+    public function update(ProjectRequest $request, Project $project)
     {
         //
     }

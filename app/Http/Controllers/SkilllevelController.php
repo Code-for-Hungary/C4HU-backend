@@ -17,9 +17,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SkilllevelRequest;
 use App\Http\Resources\SkilllevelResource;
 use App\Models\Skilllevel;
-use Illuminate\Http\Request;
 
 class SkilllevelController extends Controller
 {
@@ -67,10 +67,10 @@ class SkilllevelController extends Controller
      * @apiParam (x-www-form-urlencoded) {number} order Skilllevel's order in UI
      * @apiUse SkilllevelResponse
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\SkilllevelRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SkilllevelRequest $request)
     {
         return new SkilllevelResource(Skilllevel::create($request->validated()));
     }
@@ -103,11 +103,11 @@ class SkilllevelController extends Controller
      * @apiParam (x-www-form-urlencoded) {number} order Skilllevel's order in UI
      * @apiUse SkilllevelResponse
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\SkilllevelRequest  $request
      * @param  \App\Models\Skilllevel  $skilllevel
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Skilllevel $skilllevel)
+    public function update(SkilllevelRequest $request, Skilllevel $skilllevel)
     {
         if ($skilllevel->update($request->validated())) {
             return new SkilllevelResource($skilllevel);

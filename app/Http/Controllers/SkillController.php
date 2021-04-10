@@ -4,22 +4,31 @@
  * @apiSuccess {number} id Skill's unique id
  * @apiSuccess {string} name Skill's name
  * @apiSuccess {number} order Skill's order in UI
+ * @apiSuccess {number} skillgroup_id Id of skillgroup
+ * @apiSuccess {Object} skillgroup Skillgroup object
  * @apiSuccessExample Success-Response:
  *      HTTP/1.1 200 OK
  *      {
  *          "data": {
  *              "id": 2,
  *              "name": "backend fejlesztő".
- *              "order": 10
+ *              "order": 10,
+ *              "skillgroup_id": 6,
+ *              "skillgroup": {
+ *                  "id": 6,
+ *                  "name": "Informatikus",
+ *                  "order": 60
+ *              }
  *          }
  *      }
  */
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SkillRequest;
 use App\Http\Resources\SkillResource;
 use App\Models\Skill;
-use Illuminate\Http\Request;
+use App\Models\Skillgroup;
 
 class SkillController extends Controller
 {
@@ -33,6 +42,8 @@ class SkillController extends Controller
      * @apiSuccess {number} id Skill's unique id
      * @apiSuccess {string} name Skill's name
      * @apiSuccess {number} order Skill's order in UI
+     * @apiSuccess {number} skillgroup_id Id of skillgroup
+     * @apiSuccess {Object} skillgroup Skillgroup object
      * @apiSuccessExample {json} Success-Response:
      *      HTTP/1.1 200 OK
      *      {
@@ -40,12 +51,24 @@ class SkillController extends Controller
      *              {
      *                  "id": 1,
      *                  "name": "frontend fejlesztő",
-     *                  "order": 10
+     *                  "order": 10,
+     *                  "skillgroup_id": 6,
+     *                  "skillgroup": {
+     *                      "id": 6,
+     *                      "name": "Informatikus",
+     *                      "order": 60
+     *                  }
      *              },
      *              {
      *                  "id": 2,
      *                  "name": "backend fejlesztő",
-     *                  "order": 20
+     *                  "order": 20,
+     *                  "skillgroup_id": 7
+     *                  "skillgroup": {
+     *                      "id": 7,
+     *                      "name": "Szervezés",
+     *                      "order": 70
+     *                  }
      *              }
      *          ]
      *      }
@@ -65,12 +88,13 @@ class SkillController extends Controller
      * @apiGroup Skill
      * @apiParam (x-www-form-urlencoded) {string} name Skill's name
      * @apiParam (x-www-form-urlencoded) {number} order Skill's order in UI
+     * @apiParam (x-www-form-urlencoded) {number} skillgroup_id Skillgroup object's Id
      * @apiUse SkillResponse
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\SkillRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SkillRequest $request)
     {
         return new SkillResource(Skill::create($request->validated()));
     }
@@ -101,17 +125,23 @@ class SkillController extends Controller
      * @apiParam (url) {number} id Skill's unique id
      * @apiParam (x-www-form-urlencoded) {string} name Skill's name
      * @apiParam (x-www-form-urlencoded) {number} order Skill's order in UI
+     * @apiParam (x-www-form-urlencoded) {number} skillgroup_id Skillgroup object's Id
      * @apiUse SkillResponse
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\SkillRequest  $request
      * @param  \App\Models\Skill  $skill
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Skill $skill)
+    public function update(SkillRequest $request, Skill $skill)
     {
         if ($skill->update($request->validated())) {
-            return new SkillResource($skill);
+            $skillgroup = Skillgroup::find($request->input('skillgroup_id'));
+            if ($skillgroup) {
+                $skill->skillgroup()->associate($skillgroup);
+                $skill->save();
+            }
         }
+        return new SkillResource($skill);
     }
 
     /**
