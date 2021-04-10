@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ContractstatusController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ProjectstatusController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\SkilllevelController;
 use App\Http\Controllers\TypeController;
@@ -46,6 +48,18 @@ Route::get('/skilllevels/{skilllevel}', [SkilllevelController::class, 'show']);
 Route::post('/skilllevels', [SkilllevelController::class, 'store']);
 Route::put('/skilllevels/{skilllevel}', [SkilllevelController::class, 'update']);
 Route::delete('/skilllevels/{skilllevel}', [SkilllevelController::class, 'destroy']);
+
+Route::get('/projectstatuses', [ProjectstatusController::class, 'index']);
+Route::get('/projectstatuses/{projectstatus}', [ProjectstatusController::class, 'show']);
+Route::post('/projectstatuses', [ProjectstatusController::class, 'store']);
+Route::put('/projectstatuses/{projectstatus}', [ProjectstatusController::class, 'update']);
+Route::delete('/projectstatuses/{projectstatus}', [ProjectstatusController::class, 'destroy']);
+
+Route::get('/contractstatuses', [ContractstatusController::class, 'index']);
+Route::get('/contractstatuses/{contractstatus}', [ContractstatusController::class, 'show']);
+Route::post('/contractstatuses', [ContractstatusController::class, 'store']);
+Route::put('/contractstatuses/{contractstatus}', [ContractstatusController::class, 'update']);
+Route::delete('/contractstatuses/{contractstatus}', [ContractstatusController::class, 'destroy']);
 
 Route::get('/projects', [ProjectController::class, 'index']);
 Route::get('/projects/{project}', [ProjectController::class, 'show']);
