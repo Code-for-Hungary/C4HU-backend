@@ -128,6 +128,8 @@ class ProjectstatusController extends Controller
      */
     public function destroy(Projectstatus $projectstatus)
     {
-        return new ProjectstatusResource($projectstatus->delete());
+        if ($projectstatus->delete()) {
+            return new ProjectstatusResource($projectstatus);
+        }
     }
 }

@@ -120,6 +120,8 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        return new CategoryResource($category->delete());
+        if ($category->delete()) {
+            return new CategoryResource($category);
+        }
     }
 }

@@ -128,6 +128,8 @@ class SkilllevelController extends Controller
      */
     public function destroy(Skilllevel $skilllevel)
     {
-        return new SkilllevelResource($skilllevel->delete());
+        if ($skilllevel->delete()) {
+            return new SkilllevelResource($skilllevel);
+        }
     }
 }

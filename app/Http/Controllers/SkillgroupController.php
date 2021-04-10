@@ -128,6 +128,8 @@ class SkillgroupController extends Controller
      */
     public function destroy(Skillgroup $skillgroup)
     {
-        return new SkillgroupResource($skillgroup->delete());
+        if ($skillgroup->delete()) {
+            return new SkillgroupResource($skillgroup);
+        }
     }
 }

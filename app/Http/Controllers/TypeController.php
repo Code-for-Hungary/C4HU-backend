@@ -121,6 +121,8 @@ class TypeController extends Controller
      */
     public function destroy(Type $type)
     {
-        return new TypeResource($type->delete());
+        if ($type->delete()) {
+            return new TypeResource($type);
+        }
     }
 }
