@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
 /**
  * App\Models\User
@@ -33,10 +34,16 @@ use Illuminate\Notifications\Notifiable;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \App\Models\Contributor|null $contributor
+ * @property-read \App\Models\Projectowner|null $projectowner
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Projectowner[] $projectowners
+ * @property-read int|null $projectowners_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Sanctum\PersonalAccessToken[] $tokens
+ * @property-read int|null $tokens_count
  */
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -67,4 +74,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function projectowner() {
+        return $this->hasOne(Projectowner::class);
+    }
+
+    public function contributor() {
+        return $this->hasOne(Contributor::class);
+    }
+
+    public function projectowners() {
+        return $this->belongsToMany(Projectowner::class, 'projectowner_users');
+    }
 }

@@ -14,6 +14,6 @@ class ProjectownerSeeder extends Seeder
      */
     public function run()
     {
-        Projectowner::create(['name' => 'K-Monitor', 'website' => 'http://k-monitor.hu']);
+        Projectowner::create(['name' => 'K-Monitor', 'website' => 'http://k-monitor.hu', 'user_id' => 1]);
     }
 }

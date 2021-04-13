@@ -40,6 +40,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Contributor whereUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Contributor whereZip($value)
  * @mixin \Eloquent
+ * @property-read \App\Models\User $user
  */
 class Contributor extends Model
 {
@@ -51,5 +52,9 @@ class Contributor extends Model
 
     public function skills() {
         return $this->belongsToMany(Skill::class, 'contributor_skills', 'contributor_id', 'skill_id');
+    }
+
+    public function user() {
+        return $this->belongsTo(User::class);
     }
 }

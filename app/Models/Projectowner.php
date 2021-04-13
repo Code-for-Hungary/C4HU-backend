@@ -26,6 +26,11 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Projectowner whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Projectowner whereWebsite($value)
  * @mixin \Eloquent
+ * @property int $user_id
+ * @property-read \App\Models\User $mainuser
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $users
+ * @property-read int|null $users_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Projectowner whereUserId($value)
  */
 class Projectowner extends Model
 {
@@ -33,5 +38,13 @@ class Projectowner extends Model
 
     public function projects() {
         return $this->hasMany(Project::class, 'projectowner_id');
+    }
+
+    public function mainuser() {
+        return $this->belongsTo(User::class);
+    }
+
+    public function users() {
+        return $this->belongsToMany(User::class, 'projectowner_users', 'projectowner_id', 'user_id');
     }
 }
