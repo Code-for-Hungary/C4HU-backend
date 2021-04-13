@@ -40,6 +40,11 @@ use Laravel\Sanctum\HasApiTokens;
  * @property-read int|null $projectowners_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Sanctum\PersonalAccessToken[] $tokens
  * @property-read int|null $tokens_count
+ * @property int|null $userable_id
+ * @property string|null $userable_type
+ * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $userable
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereUserableId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereUserableType($value)
  */
 class User extends Authenticatable
 {
@@ -85,5 +90,9 @@ class User extends Authenticatable
 
     public function projectowners() {
         return $this->belongsToMany(Projectowner::class, 'projectowner_users');
+    }
+
+    public function userable() {
+        return $this->morphTo();
     }
 }
