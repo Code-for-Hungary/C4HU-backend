@@ -14,6 +14,8 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        User::create(['id' => 1, 'name' => 'Admin', 'email' => 'admin@teszt.hu', 'password' => bcrypt('a'), 'email_verified_at' => '2021-04-13']);
+        User::create(['name' => 'Admin', 'email' => 'admin@teszt.hu', 'password' => bcrypt('a'), 'email_verified_at' => '2021-04-13']);
+        User::create(['name' => 'Juhász Attila', 'email' => 'juhasz.attila@k-monitor.hu', 'password' => bcrypt('a'), 'email_verified_at' => '2021-04-13',
+            'userable_id' => 1, 'userable_type' => 'App\Models\Projectowner']);
     }
 }

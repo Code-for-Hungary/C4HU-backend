@@ -26,10 +26,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Projectowner whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Projectowner whereWebsite($value)
  * @mixin \Eloquent
- * @property int $user_id
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $users
  * @property-read int|null $users_count
- * @method static \Illuminate\Database\Eloquent\Builder|Projectowner whereUserId($value)
  * @property-read \App\Models\User|null $user
  */
 class Projectowner extends Model
