@@ -19,7 +19,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $zip
  * @property string|null $city
  * @property string|null $address
- * @property int $user_id
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Contract[] $contracts
  * @property-read int|null $contracts_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Skill[] $skills
@@ -37,7 +36,6 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Contributor whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Contributor wherePhone($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Contributor whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Contributor whereUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Contributor whereZip($value)
  * @mixin \Eloquent
  * @property-read \App\Models\User $user
