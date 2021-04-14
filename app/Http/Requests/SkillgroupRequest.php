@@ -13,7 +13,7 @@ class SkillgroupRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,19 @@ class SkillgroupRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
-        ];
+        switch ($this->method()) {
+            case 'POST':
+                return [
+                    'name' => 'required|string|max:255',
+                    'order' => 'number'
+                ];
+            case 'PUT':
+                return [
+                    'name' => 'sometimes|required|string|max:255',
+                    'order' => 'sometimes|number'
+                ];
+            default:
+                return [];
+        }
     }
 }

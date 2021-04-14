@@ -23,8 +23,17 @@ class CategoryRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'name' => 'required'
-        ];
+        switch ($this->method()) {
+            case 'POST':
+                return [
+                    'name' => 'required|string|max:255'
+                ];
+            case 'PUT':
+                return [
+                    'name' => 'sometimes|required|string|max:255'
+                ];
+            default:
+                return [];
+        }
     }
 }
