@@ -60,12 +60,6 @@ class ProjectownerController extends Controller
 
     use UserRequestHandler;
 
-    public function pr(ProjectownerRequest $request) {
-        $attr = $request->validated();
-        print_r($attr);
-        print_r($attr['user']);
-    }
-
     /**
      * Display a listing of the resource.
      *
