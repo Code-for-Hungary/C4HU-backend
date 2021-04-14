@@ -16,7 +16,9 @@ class SkillResource extends JsonResource
     {
         $ret = parent::toArray($request);
         $ret['skillgroup'] = new SkillgroupResource($this->skillgroup);
-
+        if ($this->pivot) {
+            $ret['skilllevel'] = new SkilllevelResource($this->pivot->skilllevel);
+        }
         return $ret;
     }
 }

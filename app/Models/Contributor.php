@@ -44,12 +44,17 @@ class Contributor extends Model
 {
     use HasFactory;
 
+    protected $hidden = ['created_at', 'updated_at'];
+    protected $fillable = ['name', 'description', 'avatar', 'phone', 'cv_url', 'zip', 'city', 'address'];
+
     public function contracts() {
         return $this->hasMany(Contract::class, 'contributor_id');
     }
 
     public function skills() {
-        return $this->belongsToMany(Skill::class, 'contributor_skills', 'contributor_id', 'skill_id');
+        return $this->belongsToMany(Skill::class, 'contributor_skills', 'contributor_id', 'skill_id')
+            ->using(ContributorSkill::class)
+            ->withPivot('skilllevel_id');
     }
 
     public function user() {

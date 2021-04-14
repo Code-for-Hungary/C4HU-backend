@@ -4,7 +4,6 @@
  * @apiSuccess {number} id Skill's unique id
  * @apiSuccess {string} name Skill's name
  * @apiSuccess {number} order Skill's order in UI
- * @apiSuccess {number} skillgroup_id Id of skillgroup
  * @apiSuccess {Object} skillgroup Skillgroup object
  * @apiSuccessExample Success-Response:
  *      HTTP/1.1 200 OK
@@ -13,7 +12,6 @@
  *              "id": 2,
  *              "name": "backend fejlesztő".
  *              "order": 10,
- *              "skillgroup_id": 6,
  *              "skillgroup": {
  *                  "id": 6,
  *                  "name": "Informatikus",
@@ -43,7 +41,6 @@ class SkillController extends Controller
      * @apiSuccess {number} id Skill's unique id
      * @apiSuccess {string} name Skill's name
      * @apiSuccess {number} order Skill's order in UI
-     * @apiSuccess {number} skillgroup_id Id of skillgroup
      * @apiSuccess {Object} skillgroup Skillgroup object
      * @apiSuccessExample {json} Success-Response:
      *      HTTP/1.1 200 OK
@@ -53,7 +50,6 @@ class SkillController extends Controller
      *                  "id": 1,
      *                  "name": "frontend fejlesztő",
      *                  "order": 10,
-     *                  "skillgroup_id": 6,
      *                  "skillgroup": {
      *                      "id": 6,
      *                      "name": "Informatikus",
@@ -64,7 +60,6 @@ class SkillController extends Controller
      *                  "id": 2,
      *                  "name": "backend fejlesztő",
      *                  "order": 20,
-     *                  "skillgroup_id": 7
      *                  "skillgroup": {
      *                      "id": 7,
      *                      "name": "Szervezés",
@@ -98,7 +93,14 @@ class SkillController extends Controller
      */
     public function store(SkillRequest $request)
     {
-        return new SkillResource(Skill::create($request->validated()));
+        $skill = Skill::create($request->validated());
+
+        $skillgroup = Skillgroup::find($request->input('skillgroup_id'));
+        if ($skillgroup) {
+            $skill->skillgroup()->associate($skillgroup);
+            $skill->save();
+        }
+        return new SkillResource($skill);
     }
 
     /**

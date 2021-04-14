@@ -14,6 +14,9 @@ class ContributorResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        $ret = parent::toArray($request);
+        $ret['user'] = new UserResource($this->user);
+        $ret['skills'] = SkillResource::collection($this->skills);
+        return $ret;
     }
 }

@@ -34,7 +34,7 @@ class Skill extends Model
 {
     use HasFactory;
 
-    protected $hidden = ['created_at', 'updated_at'];
+    protected $hidden = ['created_at', 'updated_at', 'pivot', 'skillgroup_id'];
     protected $fillable = ['name', 'order', 'skillgroup_id'];
 
     public function skillgroup() {

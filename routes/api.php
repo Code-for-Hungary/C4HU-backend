@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContractstatusController;
+use App\Http\Controllers\ContributorController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ProjectownerController;
 use App\Http\Controllers\ProjectstatusController;
@@ -21,6 +22,12 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+Route::get('/contributors', [ContributorController::class, 'index']);
+Route::get('/contributors/{contributor}', [ContributorController::class, 'show']);
+Route::post('/contributors', [ContributorController::class, 'store']);
+Route::put('/contributors/{contributor}', [ContributorController::class, 'update']);
+Route::delete('/contributors/{contributor}', [ContributorController::class, 'destroy']);
 
 Route::get('/projectowners', [ProjectownerController::class, 'index']);
 Route::get('/projectowners/{projectowner}', [ProjectownerController::class, 'show']);
