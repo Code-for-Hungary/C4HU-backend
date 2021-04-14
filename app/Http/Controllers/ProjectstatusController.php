@@ -27,6 +27,7 @@ class ProjectstatusController extends Controller
      * Display a listing of the resource.
      *
      * @api {get} /projectstatuses Request Projectstatus index
+     * @apiSampleRequest off
      * @apiName GetProjectstatusIndex
      * @apiGroup Projectstatus
      * @apiSuccess {Object[]} data List of projectstatuses
@@ -61,10 +62,11 @@ class ProjectstatusController extends Controller
      * Store a newly created resource in storage.
      *
      * @api {post} /projectstatuses Create Projectstatus
+     * @apiSampleRequest off
      * @apiName CreateProjectstatus
      * @apiGroup Projectstatus
-     * @apiParam (x-www-form-urlencoded) {string} name Projectstatus's name
-     * @apiParam (x-www-form-urlencoded) {number} order Projectstatus's order in UI
+     * @apiParam (body) {string} name Projectstatus's name
+     * @apiParam (body) {number} order Projectstatus's order in UI
      * @apiUse ProjectstatusResponse
      *
      * @param  \App\Http\Requests\ProjectstatusRequest  $request
@@ -79,6 +81,7 @@ class ProjectstatusController extends Controller
      * Display the specified resource.
      *
      * @api {get} /projectstatuses/:id Request Projectstatus information
+     * @apiSampleRequest off
      * @apiName GetProjectstatus
      * @apiGroup Projectstatus
      * @apiParam (url) {number} id Projectstatus's unique id
@@ -96,11 +99,12 @@ class ProjectstatusController extends Controller
      * Update the specified resource in storage.
      *
      * @api {put} /projectstatuses/:id Update Projectstatus information
+     * @apiSampleRequest off
      * @apiName UpdateProjectstatus
      * @apiGroup Projectstatus
      * @apiParam (url) {number} id Projectstatus's unique id
-     * @apiParam (x-www-form-urlencoded) {string} name Projectstatus's name
-     * @apiParam (x-www-form-urlencoded) {number} order Projectstatus's order in UI
+     * @apiParam (body) {string} name Projectstatus's name
+     * @apiParam (body) {number} order Projectstatus's order in UI
      * @apiUse ProjectstatusResponse
      *
      * @param  \App\Http\Requests\ProjectstatusRequest  $request
@@ -118,6 +122,7 @@ class ProjectstatusController extends Controller
      * Remove the specified resource from storage.
      *
      * @api {delete} /projectstatuses/:id Delete Projectstatus
+     * @apiSampleRequest off
      * @apiName DeleteProjectstatus
      * @apiGroup Projectstatus
      * @apiParam (url) {number} id Projectstatus's unique id

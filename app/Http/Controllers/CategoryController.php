@@ -24,6 +24,7 @@ class CategoryController extends Controller
      * Display a listing of the resource.
      *
      * @api {get} /categories Request Category index
+     * @apiSampleRequest off
      * @apiName GetCategoryIndex
      * @apiGroup Category
      * @apiSuccess {Object[]} data List of categories
@@ -55,9 +56,10 @@ class CategoryController extends Controller
      * Store a newly created resource in storage.
      *
      * @api {post} /categories Create Category
+     * @apiSampleRequest off
      * @apiName CreateCategory
      * @apiGroup Category
-     * @apiParam (x-www-form-urlencoded) {string} name Category's name
+     * @apiParam (body) {string} name Category's name
      * @apiUse CategoryResponse
      *
      * @param  CategoryRequest  $request
@@ -72,6 +74,7 @@ class CategoryController extends Controller
      * Display the specified resource.
      *
      * @api {get} /categories/:id Request Category information
+     * @apiSampleRequest off
      * @apiName GetCategory
      * @apiGroup Category
      * @apiParam (url) {number} id Category's unique id
@@ -89,10 +92,11 @@ class CategoryController extends Controller
      * Update the specified resource in storage.
      *
      * @api {put} /categories/:id Update Category information
+     * @apiSampleRequest off
      * @apiName UpdateCategory
      * @apiGroup Category
      * @apiParam (url) {number} id Category's unique id
-     * @apiParam (x-www-form-urlencoded) {string} name Category's name
+     * @apiParam (body) {string} name Category's name
      * @apiUse CategoryResponse
 
      * @param  CategoryRequest  $request
@@ -110,6 +114,7 @@ class CategoryController extends Controller
      * Remove the specified resource from storage.
      *
      * @api {delete} /categories/:id Delete Category
+     * @apiSampleRequest off
      * @apiName DeleteCategory
      * @apiGroup Category
      * @apiParam (url) {number} id Category's unique id

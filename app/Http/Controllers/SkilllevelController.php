@@ -27,6 +27,7 @@ class SkilllevelController extends Controller
      * Display a listing of the resource.
      *
      * @api {get} /skilllevels Request Skilllevel index
+     * @apiSampleRequest off
      * @apiName GetSkilllevelIndex
      * @apiGroup Skilllevel
      * @apiSuccess {Object[]} data List of skilllevels
@@ -61,10 +62,11 @@ class SkilllevelController extends Controller
      * Store a newly created resource in storage.
      *
      * @api {post} /skilllevels Create Skilllevel
+     * @apiSampleRequest off
      * @apiName CreateSkilllevel
      * @apiGroup Skilllevel
-     * @apiParam (x-www-form-urlencoded) {string} name Skilllevel's name
-     * @apiParam (x-www-form-urlencoded) {number} order Skilllevel's order in UI
+     * @apiParam (body) {string} name Skilllevel's name
+     * @apiParam (body) {number} order Skilllevel's order in UI
      * @apiUse SkilllevelResponse
      *
      * @param  \App\Http\Requests\SkilllevelRequest  $request
@@ -79,6 +81,7 @@ class SkilllevelController extends Controller
      * Display the specified resource.
      *
      * @api {get} /skilllevels/:id Request Skilllevel information
+     * @apiSampleRequest off
      * @apiName GetSkilllevel
      * @apiGroup Skilllevel
      * @apiParam (url) {number} id Skilllevel's unique id
@@ -96,11 +99,12 @@ class SkilllevelController extends Controller
      * Update the specified resource in storage.
      *
      * @api {put} /skilllevels/:id Update Skilllevel information
+     * @apiSampleRequest off
      * @apiName UpdateSkilllevel
      * @apiGroup Skilllevel
      * @apiParam (url) {number} id Skilllevel's unique id
-     * @apiParam (x-www-form-urlencoded) {string} name Skilllevel's name
-     * @apiParam (x-www-form-urlencoded) {number} order Skilllevel's order in UI
+     * @apiParam (body) {string} name Skilllevel's name
+     * @apiParam (body) {number} order Skilllevel's order in UI
      * @apiUse SkilllevelResponse
      *
      * @param  \App\Http\Requests\SkilllevelRequest  $request
@@ -118,6 +122,7 @@ class SkilllevelController extends Controller
      * Remove the specified resource from storage.
      *
      * @api {delete} /skilllevels/:id Delete Skilllevel
+     * @apiSampleRequest off
      * @apiName DeleteSkilllevel
      * @apiGroup Skilllevel
      * @apiParam (url) {number} id Skilllevel's unique id

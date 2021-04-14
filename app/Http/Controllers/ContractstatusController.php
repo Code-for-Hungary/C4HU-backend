@@ -28,6 +28,7 @@ class ContractstatusController extends Controller
      * Display a listing of the resource.
      *
      * @api {get} /contractstatuses Request Contractstatus index
+     * @apiSampleRequest off
      * @apiName GetContractstatusIndex
      * @apiGroup Contractstatus
      * @apiSuccess {Object[]} data List of contractstatuses
@@ -62,10 +63,11 @@ class ContractstatusController extends Controller
      * Store a newly created resource in storage.
      *
      * @api {post} /contractstatuses Create Contractstatus
+     * @apiSampleRequest off
      * @apiName CreateContractstatus
      * @apiGroup Contractstatus
-     * @apiParam (x-www-form-urlencoded) {string} name Contractstatus's name
-     * @apiParam (x-www-form-urlencoded) {number} order Contractstatus's order in UI
+     * @apiParam (body) {string} name Contractstatus's name
+     * @apiParam (body) {number} order Contractstatus's order in UI
      * @apiUse ContractstatusResponse
      *
      * @param  \App\Http\Requests\ContractstatusRequest  $request
@@ -80,6 +82,7 @@ class ContractstatusController extends Controller
      * Display the specified resource.
      *
      * @api {get} /contractstatuses/:id Request Contractstatus information
+     * @apiSampleRequest off
      * @apiName GetContractstatus
      * @apiGroup Contractstatus
      * @apiParam (url) {number} id Contractstatus's unique id
@@ -97,11 +100,12 @@ class ContractstatusController extends Controller
      * Update the specified resource in storage.
      *
      * @api {put} /contractstatuses/:id Update Contractstatus information
+     * @apiSampleRequest off
      * @apiName UpdateContractstatus
      * @apiGroup Contractstatus
      * @apiParam (url) {number} id Contractstatus's unique id
-     * @apiParam (x-www-form-urlencoded) {string} name Contractstatus's name
-     * @apiParam (x-www-form-urlencoded) {number} order Contractstatus's order in UI
+     * @apiParam (body) {string} name Contractstatus's name
+     * @apiParam (body) {number} order Contractstatus's order in UI
      * @apiUse ContractstatusResponse
      *
      * @param  \App\Http\Requests\ContractstatusRequest  $request
@@ -119,6 +123,7 @@ class ContractstatusController extends Controller
      * Remove the specified resource from storage.
      *
      * @api {delete} /contractstatuses/:id Delete Contractstatus
+     * @apiSampleRequest off
      * @apiName DeleteContractstatus
      * @apiGroup Contractstatus
      * @apiParam (url) {number} id Contractstatus's unique id

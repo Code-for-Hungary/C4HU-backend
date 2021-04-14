@@ -27,6 +27,7 @@ class SkillgroupController extends Controller
      * Display a listing of the resource.
      *
      * @api {get} /skillgroups Request Skillgroup index
+     * @apiSampleRequest off
      * @apiName GetSkillgroupIndex
      * @apiGroup Skillgroup
      * @apiSuccess {Object[]} data List of skillgroups
@@ -61,10 +62,11 @@ class SkillgroupController extends Controller
      * Store a newly created resource in storage.
      *
      * @api {post} /skillgroups Create Skillgroup
+     * @apiSampleRequest off
      * @apiName CreateSkillgroup
      * @apiGroup Skillgroup
-     * @apiParam (x-www-form-urlencoded) {string} name Skillgroup's name
-     * @apiParam (x-www-form-urlencoded) {number} order Skillgroup's order in UI
+     * @apiParam (body) {string} name Skillgroup's name
+     * @apiParam (body) {number} order Skillgroup's order in UI
      * @apiUse SkillgroupResponse
      *
      * @param  \App\Http\Requests\SkillgroupRequest  $request
@@ -79,6 +81,7 @@ class SkillgroupController extends Controller
      * Display the specified resource.
      *
      * @api {get} /skillgroups/:id Request Skillgroup information
+     * @apiSampleRequest off
      * @apiName GetSkillgroup
      * @apiGroup Skillgroup
      * @apiParam (url) {number} id Skillgroup's unique id
@@ -96,11 +99,12 @@ class SkillgroupController extends Controller
      * Update the specified resource in storage.
      *
      * @api {put} /skillgroups/:id Update Skillgroup information
+     * @apiSampleRequest off
      * @apiName UpdateSkillgroup
      * @apiGroup Skillgroup
      * @apiParam (url) {number} id Skillgroup's unique id
-     * @apiParam (x-www-form-urlencoded) {string} name Skillgroup's name
-     * @apiParam (x-www-form-urlencoded) {number} order Skillgroup's order in UI
+     * @apiParam (body) {string} name Skillgroup's name
+     * @apiParam (body) {number} order Skillgroup's order in UI
      * @apiUse SkillgroupResponse
      *
      * @param  \App\Http\Requests\SkillgroupRequest  $request
@@ -118,6 +122,7 @@ class SkillgroupController extends Controller
      * Remove the specified resource from storage.
      *
      * @api {delete} /skillgroups/:id Delete Skillgroup
+     * @apiSampleRequest off
      * @apiName DeleteSkillgroup
      * @apiGroup Skillgroup
      * @apiParam (url) {number} id Skillgroup's unique id

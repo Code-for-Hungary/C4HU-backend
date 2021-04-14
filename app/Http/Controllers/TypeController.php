@@ -25,6 +25,7 @@ class TypeController extends Controller
      * Display a listing of the resource.
      *
      * @api {get} /types Request Type index
+     * @apiSampleRequest off
      * @apiName GetTypeIndex
      * @apiGroup Type
      * @apiSuccess {Object[]} data List of types
@@ -56,9 +57,10 @@ class TypeController extends Controller
      * Store a newly created resource in storage.
      *
      * @api {post} /types Create Type
+     * @apiSampleRequest off
      * @apiName CreateType
      * @apiGroup Type
-     * @apiParam (x-www-form-urlencoded) {string} name Type's name
+     * @apiParam (body) {string} name Type's name
      * @apiUse TypeResponse
 
      * @param  TypeRequest  $request
@@ -73,6 +75,7 @@ class TypeController extends Controller
      * Display the specified resource.
      *
      * @api {get} /types/:id Request Type information
+     * @apiSampleRequest off
      * @apiName GetType
      * @apiGroup Type
      * @apiParam (url) {number} id Type's unique id
@@ -90,10 +93,11 @@ class TypeController extends Controller
      * Update the specified resource in storage.
      *
      * @api {put} /types/:id Update Type information
+     * @apiSampleRequest off
      * @apiName UpdateType
      * @apiGroup Type
      * @apiParam (url) {number} id Type's unique id
-     * @apiParam (x-www-form-urlencoded) {string} name Type's name
+     * @apiParam (body) {string} name Type's name
      * @apiUse TypeResponse
      *
      * @param  TypeRequest  $request
@@ -111,6 +115,7 @@ class TypeController extends Controller
      * Remove the specified resource from storage.
      *
      * @api {delete} /types/:id Delete Type
+     * @apiSampleRequest off
      * @apiName DeleteType
      * @apiGroup Type
      * @apiParam (url) {number} id Type's unique id

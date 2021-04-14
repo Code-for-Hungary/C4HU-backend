@@ -12,6 +12,7 @@ class ProjectController extends Controller
      * Display a listing of the resource.
      *
      * @api {get} /projects Request Project index
+     * @apiSampleRequest off
      * @apiName GetProjectIndex
      * @apiGroup Project
      * @return \Illuminate\Http\Response
@@ -25,6 +26,7 @@ class ProjectController extends Controller
      * Store a newly created resource in storage.
      *
      * @api {post} /projects Create Project
+     * @apiSampleRequest off
      * @apiName CreateProject
      * @apiGroup Project
      * @param  \App\Http\Requests\ProjectRequest  $request
@@ -39,6 +41,7 @@ class ProjectController extends Controller
      * Display the specified resource.
      *
      * @api {get} /projects/:id Request Project information
+     * @apiSampleRequest off
      * @apiName GetProject
      * @apiGroup Project
      * @param  \App\Models\Project  $project
@@ -53,6 +56,7 @@ class ProjectController extends Controller
      * Update the specified resource in storage.
      *
      * @api {put} /projects/:id Update Project information
+     * @apiSampleRequest off
      * @apiName UpdateProject
      * @apiGroup Project
      * @param  \App\Http\Requests\ProjectRequest  $request
@@ -68,6 +72,7 @@ class ProjectController extends Controller
      * Remove the specified resource from storage.
      *
      * @api {delete} /projects/:id Delete Project
+     * @apiSampleRequest off
      * @apiName DeleteProject
      * @apiGroup Project
      * @param  \App\Models\Project  $project
