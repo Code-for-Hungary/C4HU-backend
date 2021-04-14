@@ -34,6 +34,9 @@ class Projectowner extends Model
 {
     use HasFactory;
 
+    protected $hidden = ['created_at', 'updated_at'];
+    protected $fillable = ['name', 'description', 'website'];
+
     public function projects() {
         return $this->hasMany(Project::class, 'projectowner_id');
     }

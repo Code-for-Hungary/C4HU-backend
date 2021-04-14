@@ -3,12 +3,12 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContractstatusController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ProjectownerController;
 use App\Http\Controllers\ProjectstatusController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\SkillgroupController;
 use App\Http\Controllers\SkilllevelController;
 use App\Http\Controllers\TypeController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,9 +22,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('/projectowners', [ProjectownerController::class, 'index']);
+Route::get('/projectowners/{projectowner}', [ProjectownerController::class, 'show']);
+Route::post('/projectowners', [ProjectownerController::class, 'store']);
+Route::put('/projectowners/{projectowner}', [ProjectownerController::class, 'update']);
+Route::delete('/projectowners/{projectowner}', [ProjectownerController::class, 'destroy']);
 
 Route::get('/categories', [CategoryController::class, 'index']);
 Route::get('/categories/{category}', [CategoryController::class, 'show']);
